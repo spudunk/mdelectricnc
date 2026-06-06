@@ -175,22 +175,26 @@
 	<!-- Why Atlas -->
 	<section class="border-t border-zinc-800 px-6 py-20">
 		<div class="mx-auto max-w-5xl">
-			<h2 class="mb-12 text-center text-4xl font-semibold tracking-tight">Why Homeowners Choose Atlas Plumbing</h2>
+			<h2 class="mb-12 text-center text-4xl font-semibold tracking-tight">
+				Why Homeowners Choose Atlas Plumbing
+			</h2>
 			<div class="grid gap-8 text-center md:grid-cols-3">
 				<div>
-					<div class="mb-4 text-3xl">🛠️</div>
+					<div class="mb-4 text-3xl flex justify-center"><Calendar class="h-18 w-18" /></div>
 					<h3 class="mb-2 text-xl font-semibold">20+ Years Experience</h3>
 					<p class="text-zinc-400">Deep expertise across every residential plumbing challenge.</p>
 				</div>
 				<div>
-					<div class="mb-4 text-3xl">✓</div>
+					<div class="mb-4 text-3xl flex justify-center"><Trophy class="h-18 w-18" /></div>
 					<h3 class="mb-2 text-xl font-semibold">Quality Workmanship</h3>
 					<p class="text-zinc-400">Every job completed to the highest standard, guaranteed.</p>
 				</div>
 				<div>
-					<div class="mb-4 text-3xl">🏠</div>
+					<div class="mb-4 text-3xl flex justify-center"><House class="h-18 w-18" /></div>
 					<h3 class="mb-2 text-xl font-semibold">Repair &amp; New Construction</h3>
-					<p class="text-zinc-400">Specialists in both service calls and full plumbing installations.</p>
+					<p class="text-zinc-400">
+						Specialists in both service calls and full plumbing installations.
+					</p>
 				</div>
 			</div>
 		</div>
