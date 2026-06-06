@@ -28,7 +28,7 @@ export const structuredData = {
     addressCountry: 'US'
   },
   areaServed: 'Albany, OR',
-  telephone: contact.phone,
   url: 'https://atlasplumbed.com',
-  serviceType: ['Residential Plumbing', 'Commercial Plumbing', 'New Construction Plumbing']
+  serviceType: ['Residential Plumbing', 'Commercial Plumbing', 'New Construction Plumbing'],
+  ...(contact.showTel && { telephone: contact.phone })
 };
