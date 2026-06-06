@@ -22,9 +22,9 @@ export const site = {
 export const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
-  name: 'Atlas Plumbing',
+  name: site.name,
   description:
-    'Professional residential and commercial plumbing services and new construction in Albany, Oregon.',
+    site.description,
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Albany',
