@@ -1,6 +1,7 @@
 import { env } from '$env/dynamic/private';
 import { dev } from '$app/environment';
 import { fail } from '@sveltejs/kit';
+import { contact } from '$lib';
 
 const turnstileSecret = dev
 	? '1x0000000000000000000000000000000AA'
@@ -32,9 +33,9 @@ export const actions = {
 		if (result.success) {
 			return {
 				success: true,
-				phone: '(541) 555-0123',
-				email: 'info@atlasplumbed.com',
-				tel: '+15415550123'
+				phone: contact.phone,
+				email: contact.email,
+				tel: contact.tel
 			};
 		}
 

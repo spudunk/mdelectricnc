@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
-	import { structuredData } from '$lib';
+	import { structuredData, site } from '$lib';
 	import { env } from '$env/dynamic/public';
 	import { dev } from '$app/environment';
 
@@ -48,32 +48,23 @@
 </script>
 
 <svelte:head>
-	<title>Atlas Plumbing | Residential & Commercial Plumbing in Albany, OR</title>
-	<meta
-		name="description"
-		content="Atlas Plumbing provides professional residential and commercial plumbing services and new construction plumbing in Albany, Oregon."
-	/>
+	<title>{site.title}</title>
+	<meta name="description" content={site.description} />
 	<!-- CF Turnstile optimization -->
 	<link rel="preconnect" href="https://challenges.cloudflare.com" />
 
 	<!-- Open Graph -->
-	<meta property="og:title" content="Atlas Plumbing | Plumbing Services Albany, OR" />
-	<meta
-		property="og:description"
-		content="Expert residential, commercial, and new construction plumbing services in Albany, Oregon."
-	/>
+	<meta property="og:title" content={site.og.title} />
+	<meta property="og:description" content={site.og.description} />
 	<meta property="og:type" content="website" />
-	<meta property="og:url" content="https://atlasplumbed.com" />
+	<meta property="og:url" content={site.url} />
 	<meta property="og:locale" content="en_US" />
-	<meta property="og:site_name" content="Atlas Plumbing" />
+	<meta property="og:site_name" content={site.name} />
 
 	<!-- Twitter Card -->
 	<meta name="twitter:card" content="summary" />
-	<meta name="twitter:title" content="Atlas Plumbing | Albany, OR" />
-	<meta
-		name="twitter:description"
-		content="Residential & commercial plumbing and new construction services in Albany, Oregon."
-	/>
+	<meta name="twitter:title" content={site.twitter.title} />
+	<meta name="twitter:description" content={site.twitter.description} />
 
 	<!-- JSON-LD Structured Data -->
 	{@html `<script type="application/ld+json">${JSON.stringify(structuredData)}</script>`}
