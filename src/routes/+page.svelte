@@ -109,7 +109,7 @@
 	<!-- Hero -->
 	<section id="hero" class="flex min-h-[90vh] flex-col items-center justify-center pb-12 text-center">
 		<div class="max-w-3xl">
-			<Logo class="mx-auto w-md md:w-lg lg:w-xl h-auto" />
+			<Logo class="mx-auto w-fit sm:w-md md:w-lg h-auto" />
 			<h1 class="mb-4 text-6xl font-semibold tracking-tighter">Reliable Plumbing.<br />Every Time.</h1>
 			<p class="mb-10 text-2xl text-zinc-400">
 				Residential repair and new construction in Albany, OR — backed by over 20 years of experience.

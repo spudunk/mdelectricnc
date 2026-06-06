@@ -17,7 +17,7 @@
 	<nav class="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
 		<a href="/" class="flex items-center gap-4">
 			<Logo class="h-16 w-auto" />
-			<span class="font-semibold text-xl tracking-tight text-white text-nowrap">Atlas Plumbing</span>
+			<span class="font-semibold text-xl tracking-tight text-white">Atlas Plumbing</span>
 		</a>
 
 		<div class="hidden items-center gap-8 text-sm md:flex">
