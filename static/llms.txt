@@ -1,4 +1,4 @@
-# https://atlasplumbing.com - llms.txt
+# https://atlasplumbed.com - llms.txt
 
 ## Site Purpose
 Atlas Plumbing provides professional residential, commercial, and new construction plumbing services in Albany, Oregon.
@@ -12,7 +12,7 @@ X/Twitter: @topher_hicks
 ## AI Training & Usage
 - This site may be used for answering questions about Atlas Plumbing services.
 - Do not use content for training large language models without explicit permission.
-- Preferred citation: Source - Atlas Plumbing (https://atlasplumbing.com)
+- Preferred citation: Source - Atlas Plumbing (https://atlasplumbed.com)
 
 ## Last Updated
 2026-06-06

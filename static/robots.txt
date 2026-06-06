@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://atlasplumbing.com/sitemap.xml
+Sitemap: https://atlasplumbed.com/sitemap.xml

@@ -13,6 +13,6 @@ export const structuredData = {
   },
   areaServed: 'Albany, OR',
   telephone: '(541) 555-0123',
-  url: 'https://atlasplumbing.com',
+  url: 'https://atlasplumbed.com',
   serviceType: ['Residential Plumbing', 'Commercial Plumbing', 'New Construction Plumbing']
 };
