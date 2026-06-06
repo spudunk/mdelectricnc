@@ -71,6 +71,8 @@
 	<meta name="description" content={site.description} />
 	<!-- CF Turnstile optimization -->
 	<link rel="preconnect" href="https://challenges.cloudflare.com" />
+	<link rel="canonical" href="https://atlasplumbed.com">
+
 
 	<!-- Open Graph -->
 	<meta property="og:title" content={site.title} />
