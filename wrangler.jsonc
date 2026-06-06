@@ -9,5 +9,8 @@
 		"directory": ".svelte-kit/cloudflare"
 	},
 	"workers_dev": true,
-	"preview_urls": true
+	"preview_urls": true,
+	"vars": {
+		"PUBLIC_TURNSTILE_SITEKEY": "0x4AAAAAADf42DRcZwo6HMU6",
+	}
 }
