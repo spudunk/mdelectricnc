@@ -49,7 +49,7 @@
 				widgetId = (window as any).turnstile.render(container, {
 					sitekey: turnstileSiteKey,
 					theme: 'dark',
-					size: 'compact',
+					// size: 'flexible',
 					callback: () => {
 						submitting = true;
 						form.requestSubmit();
@@ -216,7 +216,7 @@
 
 	<!-- Contact -->
 	<section id="contact" class="border-t border-zinc-800 px-6 py-20">
-		<div class="mx-auto max-w-md text-center">
+		<div class="mx-auto text-center">
 			<h2 class="mb-4 text-4xl font-semibold tracking-tight">Ready to Get Started?</h2>
 			<p class="mb-8 text-xl text-zinc-400">
 				Verify you're human below to see our contact details.
@@ -231,22 +231,23 @@
 				</a>
 			{/if}
 
-			<div class="min-h-10 text-sm">
-				{#if contact}
-					<div class="flex flex-col gap-3 text-base">
-						<a href={`mailto:${contact.email}`} class="inline-block py-2 hover:underline"
-							>{contact.email}</a
-						>
-					</div>
-				{:else}
-					{#if error}
-						<div class="mt-2 mb-8 flex justify-center gap-2 text-xs text-red-400">
-							<span>{error}</span>
-							<button type="button" onclick={retry} class="underline hover:text-red-300"
-								>Try again</button
+			<div class="text-sm">
+				<div class="min-h-24">
+					{#if contact}
+						<div class="flex flex-col gap-3 text-base">
+							<a href={`mailto:${contact.email}`} class="inline-block py-2 hover:underline"
+								>{contact.email}</a
 							>
 						</div>
+					{:else if error}
+							<div class="mt-2 mb-8 flex justify-center gap-2 text-xs text-red-400">
+								<span>{error}</span>
+								<button type="button" onclick={retry} class="underline hover:text-red-300"
+									>Try again</button
+								>
+							</div>
 					{/if}
+				</div>
 
 					<form
 						id="turnstile-form"
@@ -269,19 +270,16 @@
 							};
 						}}
 					>
-						{#if !submitting}
-							<div class="mt-3">
+							<div class="mt-3 min-h-24">
 								<div
 									id="cf-turnstile-widget"
-									class="cf-turnstile"
+									class="cf-turnstile "
 									data-sitekey={turnstileSiteKey}
 								></div>
 							</div>
-						{:else}
-							<div class="mt-3 text-xs text-zinc-500">Verifying…</div>
-						{/if}
+
 					</form>
-				{/if}
+
 			</div>
 		</div>
 	</section>
