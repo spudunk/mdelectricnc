@@ -2,10 +2,11 @@
 	import { enhance } from '$app/forms';
 	import { structuredData } from '$lib';
 	import { env } from '$env/dynamic/public';
-	const turnstileSiteKey = env.PUBLIC_TURNSTILE_SITEKEY;
+	import { dev } from '$app/environment';
 
-	// Dev key that always passes (for local testing)
-	// const turnstileSiteKey = '1x00000000000000000000AA';
+	const turnstileSiteKey = dev
+		? '1x00000000000000000000AA'
+		: env.PUBLIC_TURNSTILE_SITEKEY;
 
 	let contact = $state<{ phone: string; email: string; tel: string } | null>(null);
 	let error = $state<string | null>(null);
@@ -92,8 +93,10 @@
 
 		<div class="min-h-10 text-sm">
 			{#if contact}
-				<a href={`tel:${contact.tel}`} class="mb-1 hover:underline">{contact.phone}</a>
-				<a href={`mailto:${contact.email}`} class="hover:underline">{contact.email}</a>
+				<div class="flex flex-col gap-3 text-base">
+					<a href={`tel:${contact.tel}`} class="inline-block py-2 hover:underline">{contact.phone}</a>
+					<a href={`mailto:${contact.email}`} class="inline-block py-2 hover:underline">{contact.email}</a>
+				</div>
 			{:else}
 				{#if error}
 					<div class="mt-2 mb-8 flex justify-center gap-2 text-xs text-red-400">

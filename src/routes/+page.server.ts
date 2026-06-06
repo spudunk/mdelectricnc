@@ -1,9 +1,10 @@
 import { env } from '$env/dynamic/private';
-const turnstileSecret = env.PRIVATE_TURNSTILE_SITEKEY;
+import { dev } from '$app/environment';
 import { fail } from '@sveltejs/kit';
 
-// Dev secret that always passes (must match the dev sitekey on the client)
-// const turnstileSecret = '1x0000000000000000000000000000000AA';
+const turnstileSecret = dev
+	? '1x0000000000000000000000000000000AA'
+	: env.PRIVATE_TURNSTILE_SITEKEY;
 
 export const actions = {
 	verify: async ({ request }) => {
