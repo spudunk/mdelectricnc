@@ -1,5 +1,9 @@
 // place files you want to import through the `$lib` alias in this folder.
 
+import { writable } from 'svelte/store';
+
+export const verifiedContact = writable<{ phone?: string; email: string; tel?: string } | null>(null);
+
 export const contact = {
   phone: '(971) 239-3552',
   email: 'info@atlasplumbed.com',
