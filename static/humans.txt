@@ -1,0 +1,13 @@
+/* TEAM */
+ Developer: Christopher Hicks
+ Contact: chris [at] webboot.io
+ Twitter: @topher_hicks
+ Website: bionweb.dev
+ From: Washington, USA
+
+/* THANKS */
+
+/* SITE */
+ Last update: 2026/06/06
+ Language: English
+ Doctype: HTML5
