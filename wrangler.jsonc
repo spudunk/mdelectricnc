@@ -12,5 +12,11 @@
 	"preview_urls": true,
 	"vars": {
 		"PUBLIC_TURNSTILE_SITEKEY": "0x4AAAAAADf42DRcZwo6HMU6",
-	}
+	},
+	"observability": {
+    "logs": {
+      "enabled": false,
+      "invocation_logs": true
+    }
+  }
 }
