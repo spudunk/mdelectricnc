@@ -86,7 +86,7 @@
 
 </svelte:head>
 
-<div class="flex min-h-screen flex-col items-center justify-center bg-zinc-950 px-6 text-zinc-200">
+<main class="flex min-h-screen flex-col items-center justify-center bg-zinc-950 px-6 text-zinc-200">
 	<div class="max-w-md text-center">
 		<h1 class="mb-4 text-5xl font-semibold tracking-tight">Atlas Plumbing</h1>
 		<p class="mb-8 text-xl text-zinc-400">Albany, Oregon</p>
@@ -137,4 +137,4 @@
 			{/if}
 		</div>
 	</div>
-</div>
+</main>
