@@ -14,7 +14,7 @@ export const contact = {
 export const site = {
   name: 'Atlas Plumbing',
   url: 'https://atlasplumbed.com',
-  title: 'Atlas Plumbing | Residential & Commercial Plumbing in Albany, OR',
+  title: 'Atlas Plumbing | Professional Plumbing Service in Albany, OR',
   description:
     'Atlas Plumbing provides professional residential and commercial plumbing services and new construction plumbing in Albany, Oregon.'
 };
