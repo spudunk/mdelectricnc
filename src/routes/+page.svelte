@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
-  import { structuredData } from '$lib';
-	import { PUBLIC_TURNSTILE_SITEKEY as turnstileSiteKey } from '$env/static/public';
+	import { structuredData } from '$lib';
+	import { env } from '$env/dynamic/public';
+	const turnstileSiteKey = env.PUBLIC_TURNSTILE_SITEKEY;
 
 	// Dev key that always passes (for local testing)
 	// const turnstileSiteKey = '1x00000000000000000000AA';
-
 
 	let contact = $state<{ phone: string; email: string; tel: string } | null>(null);
 	let error = $state<string | null>(null);
@@ -52,8 +52,8 @@
 		name="description"
 		content="Atlas Plumbing provides professional residential and commercial plumbing services and new construction plumbing in Albany, Oregon."
 	/>
-  <!-- CF Turnstile optimization -->
-  <link rel="preconnect" href="https://challenges.cloudflare.com" />
+	<!-- CF Turnstile optimization -->
+	<link rel="preconnect" href="https://challenges.cloudflare.com" />
 
 	<!-- Open Graph -->
 	<meta property="og:title" content="Atlas Plumbing | Plumbing Services Albany, OR" />
@@ -77,13 +77,8 @@
 	<!-- JSON-LD Structured Data -->
 	{@html `<script type="application/ld+json">${JSON.stringify(structuredData)}</script>`}
 
-  <!-- CF Turnstile script -->
-  <script
-  src="https://challenges.cloudflare.com/turnstile/v0/api.js"
-  async
-  defer
-></script>
-
+	<!-- CF Turnstile script -->
+	<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </svelte:head>
 
 <main class="flex min-h-screen flex-col items-center justify-center bg-zinc-950 px-6 text-zinc-200">
@@ -103,11 +98,7 @@
 				{#if error}
 					<div class="mt-2 mb-8 flex justify-center gap-2 text-xs text-red-400">
 						<span>{error}</span>
-						<button
-							type="button"
-							onclick={retry}
-							class="underline hover:text-red-300"
-						>
+						<button type="button" onclick={retry} class="underline hover:text-red-300">
 							Try again
 						</button>
 					</div>

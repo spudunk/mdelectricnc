@@ -1,4 +1,5 @@
-import { PRIVATE_TURNSTILE_SITEKEY as turnstileSecret } from '$env/static/private';
+import { env } from '$env/dynamic/private';
+const turnstileSecret = env.PRIVATE_TURNSTILE_SITEKEY;
 import { fail } from '@sveltejs/kit';
 
 // Dev secret that always passes (must match the dev sitekey on the client)
@@ -11,17 +12,6 @@ export const actions = {
 
 		if (!token) {
 			return fail(400, { error: 'Missing verification token' });
-		}
-
-		// For dev key, the test secret always succeeds, but to make local testing
-		// completely reliable we short-circuit here.
-		if (turnstileSecret === '1x0000000000000000000000000000000AA') {
-			return {
-				success: true,
-				phone: '(541) 555-0123',
-				email: 'info@atlasplumbing.com',
-				tel: '+15415550123'
-			};
 		}
 
 		const verification = await fetch(
