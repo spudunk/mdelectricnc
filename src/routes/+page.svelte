@@ -10,40 +10,48 @@
 
 	let contact = $state<{ phone?: string; email: string; tel?: string } | null>(null);
 	let error = $state<string | null>(null);
+	let submitting = $state(false);
 	let widgetId: string | null = $state(null);
 
 	function retry() {
 		error = null;
-		if (typeof window !== 'undefined' && (window as any).turnstile && widgetId) {
-			(window as any).turnstile.reset(widgetId);
-		}
+		submitting = false;
+		widgetId = null;
 	}
 
-	// Render Turnstile explicitly once the container is in the DOM.
-	// This guarantees the callback is attached and avoids timing issues
-	// with the global data-callback approach.
+	// Render Turnstile explicitly. Retry until the async script has loaded.
 	$effect(() => {
-		if (contact) return; // nothing to do if already verified
+		if (contact || submitting) return;
 
-		const container = document.getElementById('cf-turnstile-widget');
-		const form = document.getElementById('turnstile-form') as HTMLFormElement | null;
-
-		if (
-			typeof window !== 'undefined' &&
-			(window as any).turnstile &&
-			container &&
-			form &&
-			!widgetId
-		) {
-			widgetId = (window as any).turnstile.render(container, {
-				sitekey: turnstileSiteKey,
-				theme: 'dark',
-				size: 'compact',
-				callback: () => {
-					form.requestSubmit();
-				}
-			});
-		}
+		let cancelled = false;
+		const tryRender = () => {
+			if (cancelled) return;
+			const container = document.getElementById('cf-turnstile-widget');
+			const form = document.getElementById('turnstile-form') as HTMLFormElement | null;
+			if (
+				typeof window !== 'undefined' &&
+				(window as any).turnstile &&
+				container &&
+				form &&
+				!widgetId
+			) {
+				widgetId = (window as any).turnstile.render(container, {
+					sitekey: turnstileSiteKey,
+					theme: 'dark',
+					size: 'compact',
+					callback: () => {
+						submitting = true;
+						form.requestSubmit();
+					}
+				});
+			} else if (!widgetId) {
+				setTimeout(tryRender, 50);
+			}
+		};
+		tryRender();
+		return () => {
+			cancelled = true;
+		};
 	});
 </script>
 
@@ -106,20 +114,27 @@
 					action="?/verify"
 					use:enhance={() => {
 						return async ({ result }) => {
+							submitting = false;
 							if (result.type === 'success' && (result.data as any)?.success) {
 								const d = result.data as any;
 								contact = { phone: d.phone, email: d.email, tel: d.tel };
 								error = null;
 							} else if (result.type === 'failure') {
 								error = (result.data as any)?.error || 'Verification failed';
+							} else if (result.type === 'error') {
+								error = 'Something went wrong. Please try again.';
 							}
 						};
 					}}
 				>
-					<!-- Turnstile widget -->
-					<div class="mt-3">
-						<div id="cf-turnstile-widget" class="cf-turnstile" data-sitekey={turnstileSiteKey}></div>
-					</div>
+					{#if !submitting}
+						<!-- Turnstile widget -->
+						<div class="mt-3">
+							<div id="cf-turnstile-widget" class="cf-turnstile" data-sitekey={turnstileSiteKey}></div>
+						</div>
+					{:else}
+						<div class="mt-3 text-xs text-zinc-500">Verifying…</div>
+					{/if}
 				</form>
 			{/if}
 		</div>
