@@ -5,11 +5,11 @@
 	import { env } from '$env/dynamic/public';
 	import { dev } from '$app/environment';
 	import ogImage from '$lib/assets/og.png';
+	import House from 'virtual:icons/material-symbols/house-outline'
+	import Calendar from 'virtual:icons/material-symbols/calendar-clock-outline'
+	import Trophy from 'virtual:icons/material-symbols/trophy-outline'
 
-
-	const turnstileSiteKey = dev
-		? '1x00000000000000000000AA'
-		: env.PUBLIC_TURNSTILE_SITEKEY;
+	const turnstileSiteKey = dev ? '1x00000000000000000000AA' : env.PUBLIC_TURNSTILE_SITEKEY;
 
 	let contact = $state<{ phone?: string; email: string; tel?: string } | null>(null);
 	let error = $state<string | null>(null);
@@ -18,17 +18,10 @@
 
 	const testimonials = [
 		{
-			quote: 'Atlas Plumbing fixed our leaking pipe the same day. Professional, clean, and honest. Highly recommend.',
+			quote:
+				'Atlas Plumbing fixed our leaking pipe the same day. Professional, clean, and honest. Highly recommend.',
 			author: 'Sarah T., Albany'
 		},
-		{
-			quote: 'Miles installed all the plumbing for our new addition. Outstanding work and attention to detail.',
-			author: 'The Ramirez Family'
-		},
-		{
-			quote: 'Called in an emergency on a Sunday. They were here within the hour and had everything fixed quickly.',
-			author: 'David K., Albany'
-		}
 	];
 
 	function retry() {
@@ -88,7 +81,6 @@
 	<meta property="og:site_name" content={site.name} />
 	<meta property="og:image" content={ogImage} />
 
-
 	<!-- Twitter Card -->
 	<meta name="twitter:card" content="summary" />
 	<meta name="twitter:title" content={site.title} />
@@ -102,17 +94,20 @@
 	<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </svelte:head>
 
-
-
-
 <main class="bg-zinc-950 text-zinc-200">
 	<!-- Hero -->
-	<section id="hero" class="flex min-h-[90vh] flex-col items-center justify-center pb-12 text-center">
+	<section
+		id="hero"
+		class="flex min-h-[90vh] flex-col items-center justify-center pb-12 text-center"
+	>
 		<div class="max-w-3xl">
-			<Logo class="mx-auto w-fit sm:w-md md:w-lg h-auto" />
-			<h1 class="mb-4 text-6xl font-semibold tracking-tighter">Reliable Plumbing.<br />Every Time.</h1>
-			<p class="mb-10 text-2xl text-zinc-400">
-				Residential repair and new construction in Albany, OR — backed by over 20 years of experience.
+			<Logo class="mx-auto h-auto w-fit sm:w-md md:w-lg" />
+			<h1 class="mb-4 text-6xl font-semibold tracking-tighter mx-2">
+				Reliable Plumbing<br />Every Time
+			</h1>
+			<p class="mx-2 mb-10 text-2xl text-zinc-400">
+				Coming Soon to Albany, OR — Residential repair and new construction — backed by over 20 years of
+				experience.
 			</p>
 
 			{#if contact && contact.tel}
@@ -142,31 +137,30 @@
 				<div class="rounded-2xl border border-zinc-800 bg-zinc-900 p-8">
 					<h3 class="mb-4 text-2xl font-semibold">Residential Repair</h3>
 					<p class="text-zinc-400">
-						Leaks, clogs, broken fixtures, water heaters, and every other plumbing problem a home can have.
-						Miles brings exceptional skill to every repair, big or small.
+						Leaks, clogs, broken fixtures, water heaters, and every other plumbing problem a home
+						can have. Miles brings exceptional skill to every repair, big or small.
 					</p>
-
 				</div>
 
 				<div class="rounded-2xl border border-zinc-800 bg-zinc-900 p-8">
 					<h3 class="mb-4 text-2xl font-semibold">New Construction</h3>
 					<p class="text-zinc-400">
-						Full plumbing rough-in and finish work for new homes and renovations. Quality installation that
-						lasts, done right the first time.
+						Full plumbing rough-in and finish work for new homes and renovations. Quality
+						installation that lasts, done right the first time.
 					</p>
-
 				</div>
 			</div>
 		</div>
 	</section>
 
 	<!-- About -->
-	<section id="about" class="border-t border-zinc-800 bg-zinc-900 px-6 py-20">
+	<section hidden id="about" class="border-t border-zinc-800 bg-zinc-900 px-6 py-20">
 		<div class="mx-auto max-w-3xl text-center">
 			<h2 class="mb-8 text-4xl font-semibold tracking-tight">Meet Miles Helm</h2>
 			<p class="text-xl leading-relaxed text-zinc-300">
-				Miles Helm has spent more than 20 years solving every kind of residential plumbing problem — big or small.
-				He built Atlas Plumbing on the belief that quality work and honest service should be the standard, not the exception.
+				Miles Helm has spent more than 20 years solving every kind of residential plumbing problem —
+				big or small. He built Atlas Plumbing on the belief that quality work and honest service
+				should be the standard, not the exception.
 			</p>
 			<p class="mt-6 text-primary">20+ years of dedicated craftsmanship in Albany, Oregon.</p>
 		</div>
@@ -203,7 +197,9 @@
 	<!-- Testimonials -->
 	<section hidden id="testimonials" class="border-t border-zinc-800 bg-zinc-900 px-6 py-20">
 		<div class="mx-auto max-w-6xl">
-			<h2 class="mb-12 text-center text-4xl font-semibold tracking-tight">What Albany Homeowners Say</h2>
+			<h2 class="mb-12 text-center text-4xl font-semibold tracking-tight">
+				What Albany Homeowners Say
+			</h2>
 
 			<div class="grid gap-8 md:grid-cols-3">
 				{#each testimonials as testimonial}
@@ -220,7 +216,9 @@
 	<section id="contact" class="border-t border-zinc-800 px-6 py-20">
 		<div class="mx-auto max-w-md text-center">
 			<h2 class="mb-4 text-4xl font-semibold tracking-tight">Ready to Get Started?</h2>
-			<p class="mb-8 text-xl text-zinc-400">Call now or verify below to see our contact details.</p>
+			<p class="mb-8 text-xl text-zinc-400">
+				Verify you're human below to see our contact details.
+			</p>
 
 			{#if contact && contact.tel}
 				<a
@@ -229,25 +227,22 @@
 				>
 					Call Now: {contact.phone}
 				</a>
-			{:else}
-				<a
-					href="#contact"
-					class="mb-10 inline-block rounded bg-primary px-10 py-4 text-lg font-medium text-white transition hover:brightness-80"
-				>
-					Contact Us
-				</a>
 			{/if}
 
 			<div class="min-h-10 text-sm">
 				{#if contact}
 					<div class="flex flex-col gap-3 text-base">
-						<a href={`mailto:${contact.email}`} class="inline-block py-2 hover:underline">{contact.email}</a>
+						<a href={`mailto:${contact.email}`} class="inline-block py-2 hover:underline"
+							>{contact.email}</a
+						>
 					</div>
 				{:else}
 					{#if error}
 						<div class="mt-2 mb-8 flex justify-center gap-2 text-xs text-red-400">
 							<span>{error}</span>
-							<button type="button" onclick={retry} class="underline hover:text-red-300">Try again</button>
+							<button type="button" onclick={retry} class="underline hover:text-red-300"
+								>Try again</button
+							>
 						</div>
 					{/if}
 
@@ -258,13 +253,13 @@
 						use:enhance={() => {
 							return async ({ result }) => {
 								submitting = false;
-							if (result.type === 'success' && (result.data as any)?.success) {
-								const d = result.data as any;
-								const verified = { phone: d.phone, email: d.email, tel: d.tel };
-								contact = verified;
-								verifiedContact.set(verified);
-								error = null;
-							} else if (result.type === 'failure') {
+								if (result.type === 'success' && (result.data as any)?.success) {
+									const d = result.data as any;
+									const verified = { phone: d.phone, email: d.email, tel: d.tel };
+									contact = verified;
+									verifiedContact.set(verified);
+									error = null;
+								} else if (result.type === 'failure') {
 									error = (result.data as any)?.error || 'Verification failed';
 								} else if (result.type === 'error') {
 									error = 'Something went wrong. Please try again.';
@@ -274,7 +269,11 @@
 					>
 						{#if !submitting}
 							<div class="mt-3">
-								<div id="cf-turnstile-widget" class="cf-turnstile" data-sitekey={turnstileSiteKey}></div>
+								<div
+									id="cf-turnstile-widget"
+									class="cf-turnstile"
+									data-sitekey={turnstileSiteKey}
+								></div>
 							</div>
 						{:else}
 							<div class="mt-3 text-xs text-zinc-500">Verifying…</div>
