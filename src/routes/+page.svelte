@@ -122,7 +122,7 @@
 				>
 					<!-- Turnstile widget -->
 					<div class="mt-3">
-						<div class="cf-turnstile" data-sitekey={turnstileSiteKey}></div>
+						<div id="cf-turnstile-widget" class="cf-turnstile" data-sitekey={turnstileSiteKey}></div>
 					</div>
 				</form>
 			{/if}
