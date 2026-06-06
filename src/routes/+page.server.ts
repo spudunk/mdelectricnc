@@ -32,7 +32,7 @@ export const actions = {
 			return {
 				success: true,
 				phone: '(541) 555-0123',
-				email: 'info@atlasplumbing.com',
+				email: 'info@atlasplumbed.com',
 				tel: '+15415550123'
 			};
 		}

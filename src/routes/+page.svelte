@@ -62,7 +62,7 @@
 		content="Expert residential, commercial, and new construction plumbing services in Albany, Oregon."
 	/>
 	<meta property="og:type" content="website" />
-	<meta property="og:url" content="https://atlasplumbing.com" />
+	<meta property="og:url" content="https://atlasplumbed.com" />
 	<meta property="og:locale" content="en_US" />
 	<meta property="og:site_name" content="Atlas Plumbing" />
 
@@ -122,7 +122,7 @@
 				>
 					<!-- Turnstile widget -->
 					<div class="mt-3">
-						<div id="cf-turnstile-widget"></div>
+						<div class="cf-turnstile" data-sitekey={turnstileSiteKey}></div>
 					</div>
 				</form>
 			{/if}
