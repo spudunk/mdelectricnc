@@ -5,9 +5,9 @@
 	import { env } from '$env/dynamic/public';
 	import { dev } from '$app/environment';
 	import ogImage from '$lib/assets/og.png';
-	import House from 'virtual:icons/material-symbols/house-outline'
-	import Calendar from 'virtual:icons/material-symbols/calendar-clock-outline'
-	import Trophy from 'virtual:icons/material-symbols/trophy-outline'
+	import House from 'virtual:icons/material-symbols/house-outline';
+	import Calendar from 'virtual:icons/material-symbols/calendar-clock-outline';
+	import Trophy from 'virtual:icons/material-symbols/trophy-outline';
 
 	const turnstileSiteKey = dev ? '1x00000000000000000000AA' : env.PUBLIC_TURNSTILE_SITEKEY;
 
@@ -21,7 +21,7 @@
 			quote:
 				'Atlas Plumbing fixed our leaking pipe the same day. Professional, clean, and honest. Highly recommend.',
 			author: 'Sarah T., Albany'
-		},
+		}
 	];
 
 	function retry() {
@@ -71,8 +71,7 @@
 	<meta name="description" content={site.description} />
 	<!-- CF Turnstile optimization -->
 	<link rel="preconnect" href="https://challenges.cloudflare.com" />
-	<link rel="canonical" href="https://atlasplumbed.com">
-
+	<link rel="canonical" href="https://atlasplumbed.com" />
 
 	<!-- Open Graph -->
 	<meta property="og:title" content={site.title} />
@@ -104,12 +103,12 @@
 	>
 		<div class="max-w-3xl">
 			<Logo class="mx-auto h-auto w-fit sm:w-md md:w-lg" />
-			<h1 class="mb-4 text-6xl font-semibold tracking-tighter mx-2">
+			<h1 class="mx-2 mb-4 text-6xl font-semibold tracking-tighter">
 				Reliable Plumbing<br />Every Time
 			</h1>
 			<p class="mx-2 mb-10 text-2xl text-zinc-400">
-				Coming Soon to Albany, OR — Residential repair and new construction — backed by over 20 years of
-				experience.
+				Coming Soon to Albany, OR — Residential repair and new construction — backed by over 20
+				years of experience.
 			</p>
 
 			{#if contact && contact.tel}
@@ -176,17 +175,17 @@
 			</h2>
 			<div class="grid gap-8 text-center md:grid-cols-3">
 				<div>
-					<div class="mb-4 text-3xl flex justify-center"><Calendar class="h-18 w-18" /></div>
+					<div class="mb-4 flex justify-center text-3xl"><Calendar class="h-18 w-18" /></div>
 					<h3 class="mb-2 text-xl font-semibold">20+ Years Experience</h3>
 					<p class="text-zinc-400">Deep expertise across every residential plumbing challenge.</p>
 				</div>
 				<div>
-					<div class="mb-4 text-3xl flex justify-center"><Trophy class="h-18 w-18" /></div>
+					<div class="mb-4 flex justify-center text-3xl"><Trophy class="h-18 w-18" /></div>
 					<h3 class="mb-2 text-xl font-semibold">Quality Workmanship</h3>
 					<p class="text-zinc-400">Every job completed to the highest standard, guaranteed.</p>
 				</div>
 				<div>
-					<div class="mb-4 text-3xl flex justify-center"><House class="h-18 w-18" /></div>
+					<div class="mb-4 flex justify-center text-3xl"><House class="h-18 w-18" /></div>
 					<h3 class="mb-2 text-xl font-semibold">Repair &amp; New Construction</h3>
 					<p class="text-zinc-400">
 						Specialists in both service calls and full plumbing installations.
@@ -217,69 +216,63 @@
 	<!-- Contact -->
 	<section id="contact" class="border-t border-zinc-800 px-6 py-20">
 		<div class="mx-auto text-center">
-			<h2 class="mb-4 text-4xl font-semibold tracking-tight">Ready to Get Started?</h2>
-			<p class="mb-8 text-xl text-zinc-400">
-				Verify you're human below to see our contact details.
-			</p>
+			<h2 class="mb-4 text-4xl font-semibold tracking-tight">Want to Connect?</h2>
 
-			{#if contact && contact.tel}
-				<a
-					href={`tel:${contact.tel}`}
-					class="mb-10 inline-block rounded bg-primary px-10 py-4 text-lg font-medium text-white transition hover:brightness-80"
-				>
-					Call Now: {contact.phone}
-				</a>
-			{/if}
+			<div class="min-h-32">
+				{#if !contact}
+					<p class="mb-8 py-2 text-xl text-zinc-400">
+						Verify you're human below to see our contact details.
+					</p>
+				{/if}
+
+				{#if contact}
+					{#if contact.tel}
+						<a
+							href={`tel:${contact.tel}`}
+							class="mb-10 inline-block rounded bg-primary px-10 py-4 text-lg font-medium text-white transition hover:brightness-80"
+						>
+							Call Now: {contact.phone}
+						</a>
+					{/if}
+					<div class="flex flex-col gap-3 text-base">
+						<a href={`mailto:${contact.email}`} class="inline-block py-2 hover:underline text-blue-300"
+							>{contact.email}</a
+						>
+					</div>
+				{:else if error}
+					<div class="mt-2 mb-8 flex justify-center gap-2 text-xs text-red-400">
+						<span>{error}</span>
+						<button type="button" onclick={retry} class="underline hover:text-red-300"
+							>Try again</button
+						>
+					</div>
+				{/if}
+			</div>
 
 			<div class="text-sm">
-				<div class="min-h-24">
-					{#if contact}
-						<div class="flex flex-col gap-3 text-base">
-							<a href={`mailto:${contact.email}`} class="inline-block py-2 hover:underline"
-								>{contact.email}</a
-							>
-						</div>
-					{:else if error}
-							<div class="mt-2 mb-8 flex justify-center gap-2 text-xs text-red-400">
-								<span>{error}</span>
-								<button type="button" onclick={retry} class="underline hover:text-red-300"
-									>Try again</button
-								>
-							</div>
-					{/if}
-				</div>
-
-					<form
-						id="turnstile-form"
-						method="POST"
-						action="?/verify"
-						use:enhance={() => {
-							return async ({ result }) => {
-								submitting = false;
-								if (result.type === 'success' && (result.data as any)?.success) {
-									const d = result.data as any;
-									const verified = { phone: d.phone, email: d.email, tel: d.tel };
-									contact = verified;
-									verifiedContact.set(verified);
-									error = null;
-								} else if (result.type === 'failure') {
-									error = (result.data as any)?.error || 'Verification failed';
-								} else if (result.type === 'error') {
-									error = 'Something went wrong. Please try again.';
-								}
-							};
-						}}
-					>
-							<div class="mt-3 min-h-24">
-								<div
-									id="cf-turnstile-widget"
-									class="cf-turnstile "
-									data-sitekey={turnstileSiteKey}
-								></div>
-							</div>
-
-					</form>
-
+				<form
+					id="turnstile-form"
+					method="POST"
+					action="?/verify"
+					use:enhance={() => {
+						return async ({ result }) => {
+							submitting = false;
+							if (result.type === 'success' && (result.data as any)?.success) {
+								const d = result.data as any;
+								const verified = { phone: d.phone, email: d.email, tel: d.tel };
+								contact = verified;
+								verifiedContact.set(verified);
+								error = null;
+							} else if (result.type === 'failure') {
+								error = (result.data as any)?.error || 'Verification failed';
+							} else if (result.type === 'error') {
+								error = 'Something went wrong. Please try again.';
+							}
+						};
+					}}
+				>
+					<div id="cf-turnstile-widget" class="cf-turnstile" data-sitekey={turnstileSiteKey}></div>
+				</form>
 			</div>
 		</div>
 	</section>
