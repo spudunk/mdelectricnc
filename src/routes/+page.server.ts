@@ -33,9 +33,8 @@ export const actions = {
 		if (result.success) {
 			return {
 				success: true,
-				phone: contact.phone,
 				email: contact.email,
-				tel: contact.tel
+				...(contact.showTel && { phone: contact.phone, tel: contact.tel })
 			};
 		}
 

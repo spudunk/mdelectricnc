@@ -1,9 +1,10 @@
 // place files you want to import through the `$lib` alias in this folder.
 
 export const contact = {
-  phone: '(541) 555-0123',
+  phone: '(971) 239-3552',
   email: 'info@atlasplumbed.com',
-  tel: '+15415550123'
+  tel: '+19712393552',
+  showTel: false
 };
 
 export const site = {
@@ -11,17 +12,7 @@ export const site = {
   url: 'https://atlasplumbed.com',
   title: 'Atlas Plumbing | Residential & Commercial Plumbing in Albany, OR',
   description:
-    'Atlas Plumbing provides professional residential and commercial plumbing services and new construction plumbing in Albany, Oregon.',
-  og: {
-    title: 'Atlas Plumbing | Plumbing Services Albany, OR',
-    description:
-      'Expert residential, commercial, and new construction plumbing services in Albany, Oregon.'
-  },
-  twitter: {
-    title: 'Atlas Plumbing | Albany, OR',
-    description:
-      'Residential & commercial plumbing and new construction services in Albany, Oregon.'
-  }
+    'Atlas Plumbing provides professional residential and commercial plumbing services and new construction plumbing in Albany, Oregon.'
 };
 
 export const structuredData = {
