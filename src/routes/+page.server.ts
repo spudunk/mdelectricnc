@@ -1,12 +1,11 @@
 import { env } from '$env/dynamic/private';
 import { dev } from '$app/environment';
 import { fail, type Actions } from '@sveltejs/kit';
-import { contact, type Contact } from '$lib';
+import { contact, turnstileDevKeys, type Contact } from '$lib';
+
 
 const turnstileSecret = dev
-	? '1x0000000000000000000000000000000AA' // always pass
-	// ? '2x0000000000000000000000000000000AA' // always fail
-	// ? '3x0000000000000000000000000000000AA' // token already spent
+	? turnstileDevKeys.private.pass
 	: env.PRIVATE_TURNSTILE_SITEKEY;
 
 async function verifyTurnstile(token: string, remoteip?: string) {
@@ -23,7 +22,7 @@ async function verifyTurnstile(token: string, remoteip?: string) {
 		}
 	);
 	if (!verification.ok) throw new Error('Turnstile verification request failed');
-	return verification.json() as Promise<{ success: boolean; [key: string]: unknown }>;
+	return verification.json() as Promise<{ success: boolean;[key: string]: unknown }>;
 }
 
 

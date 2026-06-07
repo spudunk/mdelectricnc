@@ -6,14 +6,12 @@
 	import House from 'virtual:icons/material-symbols/house-outline';
 	import Calendar from 'virtual:icons/material-symbols/calendar-clock-outline';
 	import Trophy from 'virtual:icons/material-symbols/trophy-outline';
-	import { structuredData, site, verifiedContact, testimonials, type Contact } from '$lib';
+	import { structuredData, site, verifiedContact, testimonials, turnstileDevKeys type Contact } from '$lib';
 	import { turnstile } from '$lib/turnstile';
 
-	const turnstileSiteKey = dev ? '1x00000000000000000000AA' : '0x4AAAAAADf42DRcZwo6HMU6';
-	// const turnstileSiteKey = '1x00000000000000000000AA' // always pass
-	// const turnstileSiteKey = '2x00000000000000000000AB' // always fail
-	// const turnstileSiteKey = '3x00000000000000000000FF' // always challenge
-	
+	const turnstileSiteKey = dev 
+	? turnstileDevKeys.public.pass 
+	: '0x4AAAAAADf42DRcZwo6HMU6';
 
 	let contact = $state<Contact | null>(null);
 	let error = $state<string | null>(null);
@@ -53,9 +51,8 @@
 	}
 
 	function onTurnstileSuccess() {
-     //** Set Local State After Turnstile */
+		//** Set Local State After Turnstile */
 	}
-
 </script>
 
 <svelte:head>
@@ -97,7 +94,7 @@
 		class="flex min-h-[90vh] flex-col items-center justify-center pb-12 text-center"
 	>
 		<div class="max-w-3xl">
-			<Logo class="mx-auto h-auto w-fit sm:w-md md:w-lg drop-shadow-xl drop-shadow-blue-400/50" />
+			<Logo class="mx-auto h-auto w-fit drop-shadow-xl drop-shadow-blue-400/50 sm:w-md md:w-lg" />
 			<h1 class="mx-2 mb-4 text-6xl font-semibold tracking-tighter">
 				Reliable Plumbing<br />Every Time
 			</h1>
