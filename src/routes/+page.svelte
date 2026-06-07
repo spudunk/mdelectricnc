@@ -134,7 +134,7 @@
 					<h3 class="mb-4 text-2xl font-semibold">Residential Repair</h3>
 					<p class="text-zinc-400">
 						Leaks, clogs, broken fixtures, water heaters, and every other plumbing problem a home
-						can have. Miles brings exceptional skill to every repair, big or small.
+						can have. Atlas Plumbing brings exceptional skill to every repair, big or small.
 					</p>
 				</div>
 
