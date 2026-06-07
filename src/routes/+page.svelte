@@ -213,7 +213,7 @@
 		<div class="mx-auto text-center">
 			<h2 class="mb-4 text-4xl font-semibold tracking-tight">Want to Connect?</h2>
 
-			<div class="min-h-32">
+			<div class="min-h-36">
 				{#if !contact}
 					<p class="mb-8 py-2 text-xl text-zinc-400">
 						Verify you're human to see our contact details...
@@ -224,7 +224,7 @@
 					{#if contact.tel}
 						<a
 							href={`tel:${contact.tel}`}
-							class="mb-10 inline-block rounded bg-primary px-10 py-4 text-lg font-medium text-white transition hover:brightness-80"
+							class="my-4 inline-block rounded bg-primary px-10 py-2 text-lg font-medium text-white transition hover:brightness-80"
 						>
 							Call Now: {contact.phone}
 						</a>
