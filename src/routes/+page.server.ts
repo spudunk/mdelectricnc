@@ -9,7 +9,7 @@ const turnstileSecret = dev
 	// ? '3x0000000000000000000000000000000AA' // token already spent
 	: env.PRIVATE_TURNSTILE_SITEKEY;
 
-async function verifyTurnstile(token: string) {
+async function verifyTurnstile(token: string, remoteip?: string) {
 	const verification = await fetch(
 		'https://challenges.cloudflare.com/turnstile/v0/siteverify',
 		{
@@ -17,7 +17,8 @@ async function verifyTurnstile(token: string) {
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({
 				secret: turnstileSecret,
-				response: token
+				response: token,
+				...(remoteip && { remoteip })
 			})
 		}
 	);
@@ -28,7 +29,7 @@ async function verifyTurnstile(token: string) {
 
 
 export const actions = {
-	verify: async ({ request }) => {
+	verify: async ({ request, getClientAddress }) => {
 		const data = await request.formData();
 		const token = data.get('cf-turnstile-response')?.toString();
 
@@ -36,8 +37,10 @@ export const actions = {
 			return fail(400, { error: 'Missing verification token' });
 		}
 
+		const ip = getClientAddress?.();
+
 		try {
-			const result = await verifyTurnstile(token);
+			const result = await verifyTurnstile(token, ip);
 			if (result.success) {
 				return {
 					success: true,
