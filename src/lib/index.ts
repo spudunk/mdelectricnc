@@ -2,7 +2,9 @@
 
 import { writable } from 'svelte/store';
 
-export const verifiedContact = writable<{ phone?: string; email: string; tel?: string } | null>(null);
+export type Contact = { phone?: string; email: string; tel?: string };
+
+export const verifiedContact = writable<Contact | null>(null);
 
 export const contact = {
   phone: '(971) 239-3552',
@@ -36,3 +38,12 @@ export const structuredData = {
   serviceType: ['Residential Plumbing', 'Commercial Plumbing', 'New Construction Plumbing'],
   ...(contact.showTel && { telephone: contact.phone })
 };
+
+export const testimonials = [
+  {
+    quote:
+      'Atlas Plumbing fixed our leaking pipe the same day. Professional, clean, and honest. Highly recommend.',
+    author: 'Sarah T., Albany'
+  }
+];
+

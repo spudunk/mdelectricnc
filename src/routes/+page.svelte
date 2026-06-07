@@ -1,76 +1,61 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
-	import { structuredData, site, verifiedContact } from '$lib';
-	import Logo from '$lib/Logo.svelte';
-	import { env } from '$env/dynamic/public';
 	import { dev } from '$app/environment';
+	import Logo from '$lib/Logo.svelte';
 	import ogImage from '$lib/assets/og.png';
 	import House from 'virtual:icons/material-symbols/house-outline';
 	import Calendar from 'virtual:icons/material-symbols/calendar-clock-outline';
 	import Trophy from 'virtual:icons/material-symbols/trophy-outline';
+	import { structuredData, site, verifiedContact, testimonials, type Contact } from '$lib';
+	import { turnstile } from '$lib/turnstile';
 
-	const turnstileSiteKey = dev ? '1x00000000000000000000AA' : env.PUBLIC_TURNSTILE_SITEKEY;
+	const turnstileSiteKey = dev ? '1x00000000000000000000AA' : '0x4AAAAAADf42DRcZwo6HMU6';
+	// const turnstileSiteKey = '1x00000000000000000000AA' // always pass
+	// const turnstileSiteKey = '2x00000000000000000000AB' // always fail
+	// const turnstileSiteKey = '3x00000000000000000000FF' // always challenge
+	
 
-	let contact = $state<{ phone?: string; email: string; tel?: string } | null>(null);
+	let contact = $state<Contact | null>(null);
 	let error = $state<string | null>(null);
-	let submitting = $state(false);
-	let widgetId: string | null = $state(null);
-
-	const testimonials = [
-		{
-			quote:
-				'Atlas Plumbing fixed our leaking pipe the same day. Professional, clean, and honest. Highly recommend.',
-			author: 'Sarah T., Albany'
-		}
-	];
+	let turnstileCtrl: { reset: () => void } | null = $state(null);
 
 	function retry() {
 		error = null;
-		submitting = false;
-		widgetId = null;
+		turnstileCtrl?.reset();
 	}
 
-	// Render Turnstile explicitly. Retry until the async script has loaded.
-	$effect(() => {
-		if (contact || submitting) return;
-
-		let cancelled = false;
-		const tryRender = () => {
-			if (cancelled) return;
-			const container = document.getElementById('cf-turnstile-widget');
-			const form = document.getElementById('turnstile-form') as HTMLFormElement | null;
-			if (
-				typeof window !== 'undefined' &&
-				(window as any).turnstile &&
-				container &&
-				form &&
-				!widgetId
-			) {
-				widgetId = (window as any).turnstile.render(container, {
-					sitekey: turnstileSiteKey,
-					theme: 'dark',
-					// size: 'flexible',
-					callback: () => {
-						submitting = true;
-						form.requestSubmit();
-					}
-				});
-			} else if (!widgetId) {
-				setTimeout(tryRender, 50);
+	function handleTurnstileEnhance() {
+		return async ({ result }: any) => {
+			if (result.type === 'success' && result.data?.success) {
+				const d = result.data as Contact;
+				contact = { phone: d.phone, email: d.email, tel: d.tel };
+				verifiedContact.set(contact);
+				error = null;
+			} else if (result.type === 'failure') {
+				error = (result.data?.error as string) || 'Verification failed';
+			} else if (result.type === 'error') {
+				error = 'Something went wrong. Please try again.';
 			}
 		};
-		tryRender();
-		return () => {
-			cancelled = true;
-		};
-	});
+	}
+
+	function onTurnstileSuccess() {
+     //** Set Local State After Turnstile */
+	}
+
 </script>
 
 <svelte:head>
 	<title>{site.title}</title>
 	<meta name="description" content={site.description} />
-	<!-- CF Turnstile optimization -->
+
+	<!-- CF Turnstile script -->
 	<link rel="preconnect" href="https://challenges.cloudflare.com" />
+	<script
+		src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
+		defer
+	></script>
+
 	<link rel="canonical" href="https://atlasplumbed.com" />
 
 	<!-- Open Graph -->
@@ -90,9 +75,6 @@
 
 	<!-- JSON-LD Structured Data -->
 	{@html `<script type="application/ld+json">${JSON.stringify(structuredData)}</script>`}
-
-	<!-- CF Turnstile script -->
-	<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </svelte:head>
 
 <main class="bg-zinc-950 text-zinc-200">
@@ -221,7 +203,7 @@
 			<div class="min-h-32">
 				{#if !contact}
 					<p class="mb-8 py-2 text-xl text-zinc-400">
-						Verify you're human below to see our contact details.
+						Verify you're human to see our contact details...
 					</p>
 				{/if}
 
@@ -235,8 +217,9 @@
 						</a>
 					{/if}
 					<div class="flex flex-col gap-3 text-base">
-						<a href={`mailto:${contact.email}`} class="inline-block py-2 hover:underline text-blue-300"
-							>{contact.email}</a
+						<a
+							href={`mailto:${contact.email}`}
+							class="inline-block py-2 text-blue-300 hover:underline">{contact.email}</a
 						>
 					</div>
 				{:else if error}
@@ -254,24 +237,16 @@
 					id="turnstile-form"
 					method="POST"
 					action="?/verify"
-					use:enhance={() => {
-						return async ({ result }) => {
-							submitting = false;
-							if (result.type === 'success' && (result.data as any)?.success) {
-								const d = result.data as any;
-								const verified = { phone: d.phone, email: d.email, tel: d.tel };
-								contact = verified;
-								verifiedContact.set(verified);
-								error = null;
-							} else if (result.type === 'failure') {
-								error = (result.data as any)?.error || 'Verification failed';
-							} else if (result.type === 'error') {
-								error = 'Something went wrong. Please try again.';
-							}
-						};
-					}}
+					use:enhance={handleTurnstileEnhance}
 				>
-					<div id="cf-turnstile-widget" class="cf-turnstile" data-sitekey={turnstileSiteKey}></div>
+					<div
+						use:turnstile={{
+							sitekey: turnstileSiteKey,
+							onSuccess: onTurnstileSuccess,
+							ref: (ctrl) => (turnstileCtrl = ctrl)
+						}}
+						id="cf-turnstile-widget"
+					></div>
 				</form>
 			</div>
 		</div>

@@ -3,6 +3,16 @@
 import 'unplugin-icons/types/svelte'
 
 declare global {
+	
+	interface Window {
+		turnstile: {
+			render: (container: string | HTMLElement, options: TurnstileOptions) => string;
+			reset: (widgetId?: string) => void;
+			getResponse: (widgetId?: string) => string | undefined;
+			remove: (widgetId?: string) => void;
+		};
+	}
+
 	namespace App {
 		interface Platform {
 			env: Env;
@@ -19,4 +29,16 @@ declare global {
 	}
 }
 
-export {};
+// Define the Turnstile options interface for type safety
+interface TurnstileOptions {
+	sitekey: string;
+	callback?: (token: string) => void;
+	'error-callback'?: () => void;
+	'expired-callback'?: () => void;
+	'timeout-callback'?: () => void;
+	theme?: 'light' | 'dark' | 'auto';
+	size?: 'normal' | 'invisible';
+	// Add other optional Turnstile parameters as needed
+}
+
+export { };
