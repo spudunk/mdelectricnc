@@ -16,7 +16,7 @@
 <header class="sticky top-0 z-50 border-b border-zinc-800 bg-zinc-950">
 	<nav class="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
 		<a href="/" class="flex items-center gap-4">
-			<Logo class="h-16 w-auto" />
+			<Logo class="h-16 w-auto drop-shadow-sm drop-shadow-blue-300/70" />
 			<span class="font-semibold text-xl tracking-tight text-white">Atlas Plumbing</span>
 		</a>
 

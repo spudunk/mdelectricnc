@@ -97,7 +97,7 @@
 		class="flex min-h-[90vh] flex-col items-center justify-center pb-12 text-center"
 	>
 		<div class="max-w-3xl">
-			<Logo class="mx-auto h-auto w-fit sm:w-md md:w-lg" />
+			<Logo class="mx-auto h-auto w-fit sm:w-md md:w-lg drop-shadow-xl drop-shadow-blue-400/50" />
 			<h1 class="mx-2 mb-4 text-6xl font-semibold tracking-tighter">
 				Reliable Plumbing<br />Every Time
 			</h1>
