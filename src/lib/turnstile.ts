@@ -1,10 +1,16 @@
 export interface TurnstileOptions {
 	sitekey: string;
 	onSuccess?: () => void;
+	onError?: (errorCode: string) => void;
+	onTimeout?: () => void;
+	onExpired?: () => void;
 	ref?: (ctrl: { reset: () => void }) => void;
 }
 
-export function turnstile(node: HTMLElement, { sitekey, onSuccess, ref }: TurnstileOptions) {
+export function turnstile(
+	node: HTMLElement,
+	{ sitekey, onSuccess, onError, onTimeout, onExpired, ref }: TurnstileOptions
+) {
 	let widget: string | undefined;
 	let cancelled = false;
 
@@ -24,7 +30,10 @@ export function turnstile(node: HTMLElement, { sitekey, onSuccess, ref }: Turnst
 				callback: () => {
 					onSuccess?.();
 					node.closest('form')?.requestSubmit();
-				}
+				},
+				'error-callback': (errorCode: string) => onError?.(errorCode),
+				'timeout-callback': () => onTimeout?.(),
+				'expired-callback': () => onExpired?.()
 			});
 			ref?.({ reset });
 		} else {

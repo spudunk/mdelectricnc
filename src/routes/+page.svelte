@@ -24,6 +24,19 @@
 		turnstileCtrl?.reset();
 	}
 
+	function handleTurnstileError(code: string) {
+		error = 'Security check failed. Please try again.';
+		console.error('Turnstile error:', code);
+	}
+
+	function handleTurnstileTimeout() {
+		error = 'Security check timed out. Please complete the challenge.';
+	}
+
+	function handleTurnstileExpired() {
+		error = 'Security check expired. Please try again.';
+	}
+
 	function handleTurnstileEnhance() {
 		return async ({ result }: any) => {
 			if (result.type === 'success' && result.data?.success) {
@@ -243,6 +256,9 @@
 						use:turnstile={{
 							sitekey: turnstileSiteKey,
 							onSuccess: onTurnstileSuccess,
+							onError: handleTurnstileError,
+							onTimeout: handleTurnstileTimeout,
+							onExpired: handleTurnstileExpired,
 							ref: (ctrl) => (turnstileCtrl = ctrl)
 						}}
 						id="cf-turnstile-widget"

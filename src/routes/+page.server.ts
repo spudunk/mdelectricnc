@@ -4,7 +4,9 @@ import { fail, type Actions } from '@sveltejs/kit';
 import { contact, type Contact } from '$lib';
 
 const turnstileSecret = dev
-	? '1x0000000000000000000000000000000AA'
+	? '1x0000000000000000000000000000000AA' // always pass
+	// ? '2x0000000000000000000000000000000AA' // always fail
+	// ? '3x0000000000000000000000000000000AA' // token already spent
 	: env.PRIVATE_TURNSTILE_SITEKEY;
 
 async function verifyTurnstile(token: string) {

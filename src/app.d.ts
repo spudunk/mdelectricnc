@@ -32,8 +32,8 @@ declare global {
 // Define the Turnstile options interface for type safety
 interface TurnstileOptions {
 	sitekey: string;
-	callback?: (token: string) => void;
-	'error-callback'?: () => void;
+	callback?: (token?: string) => void;
+	'error-callback'?: (errorCode: string) => void;
 	'expired-callback'?: () => void;
 	'timeout-callback'?: () => void;
 	theme?: 'light' | 'dark' | 'auto';
