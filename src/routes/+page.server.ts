@@ -1,11 +1,11 @@
 import { env } from '$env/dynamic/private';
 import { dev } from '$app/environment';
 import { fail, type Actions } from '@sveltejs/kit';
-import { contact, turnstileDevKeys, type Contact } from '$lib';
-
+import { contact, type Contact } from '$lib';
+import { privateDevKeys as tsKeys } from '$lib/turnstile';
 
 const turnstileSecret = dev
-	? turnstileDevKeys.private.pass
+	? tsKeys.pass
 	: env.PRIVATE_TURNSTILE_SITEKEY;
 
 async function verifyTurnstile(token: string, remoteip?: string) {

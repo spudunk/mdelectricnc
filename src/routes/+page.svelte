@@ -6,11 +6,11 @@
 	import House from 'virtual:icons/material-symbols/house-outline';
 	import Calendar from 'virtual:icons/material-symbols/calendar-clock-outline';
 	import Trophy from 'virtual:icons/material-symbols/trophy-outline';
-	import { structuredData, site, verifiedContact, testimonials, turnstileDevKeys type Contact } from '$lib';
-	import { turnstile } from '$lib/turnstile';
+	import { structuredData, site, verifiedContact, testimonials, type Contact } from '$lib';
+	import { turnstile, publicDevKeys as tsKeys } from '$lib/turnstile';
 
 	const turnstileSiteKey = dev 
-	? turnstileDevKeys.public.pass 
+	? tsKeys.pass 
 	: '0x4AAAAAADf42DRcZwo6HMU6';
 
 	let contact = $state<Contact | null>(null);
