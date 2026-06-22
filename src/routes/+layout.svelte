@@ -24,7 +24,7 @@
 			<span class="text-xl font-semibold tracking-tight text-white">Atlas Plumbing</span>
 		</a>
 
-		<div class="hidden items-center gap-8 text-sm md:flex">
+		<div class="hidden items-center gap-8 text-sm md:flex text-accent">
 			<a href="#services" class="transition-colors hover:text-primary">Services</a>
 			<a href="#about" class="transition-colors hover:text-primary">About</a>
 			<a href="#testimonials" class="transition-colors hover:text-primary">Testimonials</a>
