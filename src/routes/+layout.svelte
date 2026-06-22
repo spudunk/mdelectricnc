@@ -1,6 +1,5 @@
 <script lang="ts">
 	import './layout.css';
-	import favicon from '$lib/assets/favicon.svg';
 	import Logo from '$lib/Logo.svelte';
 	import { verifiedContact } from '$lib';
 
@@ -10,7 +9,7 @@
 </script>
 
 <svelte:head>
-	<link rel="icon" href={favicon} />
+	<link rel="icon" href="https://atlasplumbed.com/favicon.svg" />
 </svelte:head>
 
 <header class="sticky top-0 z-50 border-b border-zinc-800 bg-zinc-950">
