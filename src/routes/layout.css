@@ -1,5 +1,11 @@
 @import 'tailwindcss';
 
+html,
+body {
+	min-height: 100%;
+	background-color: #09090b;
+}
+
 :root {
 	@theme inline {
 		--color-primary: #00c878;

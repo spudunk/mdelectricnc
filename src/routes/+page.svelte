@@ -6,6 +6,7 @@
 	import {
 		areas,
 		facebookUrl,
+		licenseNumber,
 		mapsUrl,
 		rating,
 		site,
@@ -210,8 +211,8 @@
 					<Verified class="mb-4 h-12 w-12 text-primary" />
 					<h3 class="mb-2 text-xl font-semibold">Licensed &amp; insured</h3>
 					<p class="text-zinc-400">
-						A North Carolina electrical contractor you can put on the bid sheet and the insurance
-						certificate.
+						North Carolina electrical contractor license SP.SFD.{licenseNumber}.
+						<a href="/license" class="text-primary hover:underline">See the state record</a>.
 					</p>
 				</div>
 			</div>

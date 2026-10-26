@@ -1,13 +1,19 @@
 import type { RequestHandler } from '@sveltejs/kit';
 
 const site = 'https://mdelectricnc.com';
-const lastmod = new Date().toISOString().split('T')[0];
 
 const pages = [
   {
     url: '',
+    lastmod: '2026-10-26',
     changefreq: 'weekly',
     priority: 1.0
+  },
+  {
+    url: '/license',
+    lastmod: '2026-10-26',
+    changefreq: 'monthly',
+    priority: 0.5
   }
   // Add more pages here as you create them, e.g.:
   // { url: '/services', changefreq: 'monthly', priority: 0.8 },
@@ -20,7 +26,7 @@ ${pages
   .map(
     (page) => `  <url>
     <loc>${site}${page.url}</loc>
-    <lastmod>${lastmod}</lastmod>
+    <lastmod>${page.lastmod}</lastmod>
     <changefreq>${page.changefreq}</changefreq>
     <priority>${page.priority}</priority>
   </url>`

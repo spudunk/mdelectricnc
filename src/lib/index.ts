@@ -25,6 +25,8 @@ export const site = {
 export const mapsUrl = 'https://maps.app.goo.gl/jMm7yuvyPPm1jtFw8';
 export const facebookUrl = 'https://www.facebook.com/profile.php?id=61575121650048';
 export const googlePlaceID = 'ChIJpRPX8HMjUYgRKmBgeY6KGBk';
+export const licenseLookupUrl = 'https://arls-public.ncbeec.org/public/Search';
+export const licenseNumber = '35895';
 
 export const rating = { score: 5.0, count: 8, label: 'Google reviews' };
 
