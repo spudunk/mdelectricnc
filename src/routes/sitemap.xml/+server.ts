@@ -1,6 +1,6 @@
 import type { RequestHandler } from '@sveltejs/kit';
 
-const site = 'https://atlasplumbed.com';
+const site = 'https://mdelectricnc.com';
 const lastmod = new Date().toISOString().split('T')[0];
 
 const pages = [

@@ -8,6 +8,7 @@
 /* THANKS */
 
 /* SITE */
- Last update: 2026/06/06
+ Last update: 2026/10/26
  Language: English
  Doctype: HTML5
+ Components: SvelteKit, Tailwind CSS, Cloudflare Workers

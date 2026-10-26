@@ -1,6 +1,6 @@
 {
 	"$schema": "./node_modules/wrangler/config-schema.json",
-	"name": "atlasplumbing",
+	"name": "mdelectricnc",
 	"compatibility_date": "2026-06-06",
 	"compatibility_flags": ["nodejs_als"],
 	"main": ".svelte-kit/cloudflare/_worker.js",
@@ -11,7 +11,7 @@
 	"workers_dev": true,
 	"preview_urls": true,
 	"vars": {
-		"PUBLIC_TURNSTILE_SITEKEY": "0x4AAAAAADf42DRcZwo6HMU6",
+		"PUBLIC_TURNSTILE_SITEKEY": "0x4AAAAAAFnUcCCNoSQx9OEr"
 	},
 	"observability": {
     "logs": {

@@ -1,25 +1,25 @@
 {
-  "name": "Atlas Plumbing",
-  "short_name": "Atlas",
-  "id": "/",
-  "start_url": "/",
-  "scope": "/",
-  "lang": "en",
-  "description": "Professional plumbing services for residential and commercial properties.",
-  "icons": [
-    {
-      "src": "/web-app-manifest-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "/web-app-manifest-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
-    }
-  ],
-  "theme_color": "#6c6c6c",
-  "background_color": "#6c6c6c",
-  "display": "standalone"
+	"name": "Marcus Dyess Electric LLC",
+	"short_name": "MDE",
+	"id": "/",
+	"start_url": "/",
+	"scope": "/",
+	"lang": "en",
+	"description": "Licensed electrical contractor for custom homes across the Catawba Valley.",
+	"icons": [
+		{
+			"src": "/web-app-manifest-192x192.png",
+			"sizes": "192x192",
+			"type": "image/png"
+		},
+		{
+			"src": "/web-app-manifest-512x512.png",
+			"sizes": "512x512",
+			"type": "image/png",
+			"purpose": "any maskable"
+		}
+	],
+	"theme_color": "#09090b",
+	"background_color": "#09090b",
+	"display": "standalone"
 }

@@ -13,29 +13,26 @@
 	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 	<link rel="shortcut icon" href="/favicon.ico" />
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-	<meta name="apple-mobile-web-app-title" content="Atlas Plumbing" />
+	<meta name="apple-mobile-web-app-title" content="MDE" />
 	<link rel="manifest" href="/site.webmanifest" />
 </svelte:head>
 
 <header class="sticky top-0 z-50 border-b border-zinc-800 bg-zinc-950">
 	<nav class="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
-		<a href="/" class="flex items-center gap-4">
-			<Logo class="h-16 w-auto drop-shadow-sm drop-shadow-blue-300/70" />
-			<span class="text-xl font-semibold tracking-tight text-white">Atlas Plumbing</span>
+		<a href="/" class="flex items-center gap-3">
+			<Logo class="h-12 w-auto" />
 		</a>
 
-		{#if false}
-		<div class="hidden items-center gap-8 text-sm md:flex text-accent">
+		<div class="hidden items-center gap-8 text-sm text-accent md:flex">
 			<a href="#services" class="transition-colors hover:text-primary">Services</a>
+			<a href="#builders" class="transition-colors hover:text-primary">Builders</a>
 			<a href="#about" class="transition-colors hover:text-primary">About</a>
-			<a href="#testimonials" class="transition-colors hover:text-primary">Testimonials</a>
 			<a href="#contact" class="transition-colors hover:text-primary">Contact</a>
 		</div>
-		{/if}
 
 		<a
 			href={vc?.tel ? `tel:${vc.tel}` : '#contact'}
-			class="rounded bg-primary px-5 py-2 text-sm font-medium text-white transition hover:brightness-80"
+			class="rounded bg-primary px-5 py-2 text-sm font-medium text-zinc-950 transition hover:brightness-110"
 		>
 			{vc?.phone ? `Call ${vc.phone}` : 'Contact Us'}
 		</a>

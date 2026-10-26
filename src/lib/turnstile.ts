@@ -1,3 +1,22 @@
+
+export const publicKey = '0x4AAAAAAFnUcCCNoSQx9OEr'
+
+
+// These are public dev keys, not secret
+export const privateDevKeys = {
+  pass: '1x0000000000000000000000000000000AA',
+  fail: '2x0000000000000000000000000000000AA',
+  used: '3x0000000000000000000000000000000AA'
+}
+
+export const publicDevKeys = {
+	pass: '1x00000000000000000000AA',
+	fail: '2x00000000000000000000AB',
+	challenge: '3x00000000000000000000FF'
+}
+
+
+
 export interface TurnstileOptions {
 	sitekey: string;
 	onSuccess?: () => void;
@@ -53,16 +72,3 @@ export function turnstile(
 	};
 }
 
-
-
-export const privateDevKeys = {
-  pass: '1x0000000000000000000000000000000AA',
-  fail: '2x0000000000000000000000000000000AA',
-  used: '3x0000000000000000000000000000000AA'
-}
-
-export const publicDevKeys = {
-	pass: '1x00000000000000000000AA',
-	fail: '2x00000000000000000000AB',
-	challenge: '3x00000000000000000000FF'
-}

@@ -15,7 +15,7 @@ To recreate this project with the same configuration:
 
 ```sh
 # recreate this project
-bun x sv create --template minimal --types ts --add prettier tailwindcss="plugins:none" sveltekit-adapter="adapter:cloudflare+cfTarget:workers" devtools-json mcp="ide:cursor+setup:remote" --install bun atlasplumbing
+bun x sv create --template minimal --types ts --add prettier tailwindcss="plugins:none" sveltekit-adapter="adapter:cloudflare+cfTarget:workers" devtools-json mcp="ide:cursor+setup:remote" --install bun mdelectricnc
 ```
 
 ## Developing

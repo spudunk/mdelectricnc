@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://atlasplumbed.com/sitemap.xml
+Sitemap: https://mdelectricnc.com/sitemap.xml
