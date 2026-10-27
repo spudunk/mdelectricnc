@@ -44,7 +44,8 @@ export const actions = {
 				return {
 					success: true,
 					email: contact.email,
-					...(contact.showTel && { phone: contact.phone, tel: contact.tel })
+					phone: contact.phone,
+					tel: contact.tel
 				} satisfies { success: true } & Contact;
 			}
 		} catch {

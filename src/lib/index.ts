@@ -9,8 +9,7 @@ export const verifiedContact = writable<Contact | null>(null);
 export const contact = {
 	phone: '(828) 499-3520',
 	email: 'info@mdelectricnc.com',
-	tel: '+18284993520',
-	showTel: true
+	tel: '+18284993520'
 };
 
 export const site = {
