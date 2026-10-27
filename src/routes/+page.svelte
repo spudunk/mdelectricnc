@@ -131,21 +131,27 @@
 			</p>
 
 			<div class="flex flex-col items-center justify-center gap-3 sm:flex-row">
-				{#if contact?.tel}
-					<a
-						href={`tel:${contact.tel}`}
-						class="inline-block rounded bg-primary px-10 py-4 text-lg font-medium text-zinc-950 transition hover:brightness-110"
-					>
-						Call Now
-					</a>
-				{:else}
-					<a
-						href="#contact"
-						class="inline-block rounded bg-primary px-10 py-4 text-lg font-medium text-zinc-950 transition hover:brightness-110"
+				<a
+					href={contact?.tel ? `tel:${contact.tel}` : '#contact'}
+					class="inline-grid rounded bg-primary px-10 py-4 text-lg font-medium text-zinc-950 transition hover:brightness-110"
+				>
+					<span
+						class="col-start-1 row-start-1 transition-opacity duration-300 {contact?.tel
+							? 'opacity-0'
+							: 'opacity-100'}"
+						aria-hidden={contact?.tel ? true : undefined}
 					>
 						Contact Us
-					</a>
-				{/if}
+					</span>
+					<span
+						class="col-start-1 row-start-1 transition-opacity duration-300 {contact?.tel
+							? 'opacity-100'
+							: 'opacity-0'}"
+						aria-hidden={contact?.tel ? undefined : true}
+					>
+						Call Now
+					</span>
+				</a>
 				<a
 					href="#builders"
 					class="inline-block rounded border border-zinc-700 px-10 py-4 text-lg font-medium text-white transition hover:border-primary hover:text-primary"
