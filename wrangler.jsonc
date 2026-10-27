@@ -13,6 +13,12 @@
 	"vars": {
 		"PUBLIC_TURNSTILE_SITEKEY": "0x4AAAAAAFnUcCCNoSQx9OEr"
 	},
+	"kv_namespaces": [
+		{
+			"binding": "KV",
+			"id": "d1db43575c5f4fbfb890771c999d5ffe"
+		}
+	],
 	"observability": {
     "logs": {
       "enabled": false,
