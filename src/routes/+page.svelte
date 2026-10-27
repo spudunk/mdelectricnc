@@ -143,14 +143,14 @@
 						href="#contact"
 						class="inline-block rounded bg-primary px-10 py-4 text-lg font-medium text-zinc-950 transition hover:brightness-110"
 					>
-						Talk to Marcus
+						Contact Us
 					</a>
 				{/if}
 				<a
 					href="#builders"
 					class="inline-block rounded border border-zinc-700 px-10 py-4 text-lg font-medium text-white transition hover:border-primary hover:text-primary"
 				>
-					For builders
+					For Builders
 				</a>
 			</div>
 		</div>
@@ -310,9 +310,15 @@
 	<section id="contact" class="border-t border-zinc-800 bg-zinc-900 px-6 py-20">
 		<div class="mx-auto max-w-2xl text-center">
 			<h2 class="mb-4 text-4xl font-semibold tracking-tight">Put us on the next set of plans</h2>
-			<p class="mb-8 text-lg text-zinc-400">
-				Builders and homeowners can reach Marcus directly. Verify you’re human to see the phone
-				number and email.
+			<p class="mb-3 text-lg text-zinc-400">
+				Builders and homeowners can reach Marcus directly.
+			</p>
+			<p
+				class="mb-3 text-lg text-zinc-400 transition-opacity duration-300 {contact
+					? 'opacity-0'
+					: 'opacity-100'}"
+			>
+				Verify you’re human to see the phone number and email.
 			</p>
 
 			<div class="min-h-36">
