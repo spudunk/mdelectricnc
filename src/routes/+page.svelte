@@ -7,6 +7,7 @@
 		areas,
 		facebookUrl,
 		licenseNumber,
+		googleReviewsUrl,
 		mapsUrl,
 		rating,
 		site,
@@ -78,8 +79,8 @@
 			body: 'Service entrances, panel upgrades, and dedicated circuits sized for the load a custom home actually carries — including shops, docks, and outbuildings.'
 		},
 		{
-			title: 'Troubleshooting',
-			body: 'When a circuit, panel, or finish item needs a second look, the same crew that wires the house can find it and close it out.'
+			title: 'Modern Network Cabling',
+			body: 'Structured data cabling planned with the electrical rough-in — home runs, panel location, and pathways in place before the drywall, so the network is not an afterthought.'
 		}
 	];
 </script>
@@ -212,7 +213,7 @@
 					<h3 class="mb-2 text-xl font-semibold">Licensed &amp; insured</h3>
 					<p class="text-zinc-400">
 						North Carolina electrical contractor license SP.SFD.{licenseNumber}.
-						<a href="/license" class="text-primary hover:underline">See the state record</a>.
+						<a href="/license" class="inline-block py-3 text-primary hover:underline">See the state record</a>.
 					</p>
 				</div>
 			</div>
@@ -271,7 +272,7 @@
 		<div class="mx-auto max-w-6xl">
 			<h2 class="mb-4 text-center text-4xl font-semibold tracking-tight">What customers say</h2>
 			<a
-				href={mapsUrl}
+				href={googleReviewsUrl}
 				target="_blank"
 				rel="noopener noreferrer"
 				class="mb-12 flex justify-center transition hover:opacity-80"
@@ -298,7 +299,7 @@
 			</div>
 
 			<p class="mt-10 text-center">
-				<a href={mapsUrl} class="text-primary hover:underline" rel="noopener noreferrer">
+				<a href={googleReviewsUrl} class="inline-block py-3 text-primary hover:underline" rel="noopener noreferrer">
 					See Marcus Dyess Electric on Google
 				</a>
 			</p>
@@ -325,7 +326,7 @@
 						</a>
 					{/if}
 					<div class="mt-2 flex flex-col gap-3 text-base">
-						<a href={`mailto:${contact.email}`} class="inline-block py-2 text-primary hover:underline">
+						<a href={`mailto:${contact.email}`} class="inline-block py-3 text-primary hover:underline">
 							{contact.email}
 						</a>
 					</div>
@@ -337,7 +338,7 @@
 				{/if}
 			</div>
 
-			<div class="text-sm">
+			<div class="text-sm mt-6">
 				<form id="turnstile-form" method="POST" action="?/verify" use:enhance={handleTurnstileEnhance}>
 					<div
 						use:turnstile={{
@@ -353,8 +354,8 @@
 			</div>
 
 			<p class="mt-10 flex justify-center gap-6 text-sm">
-				<a href={mapsUrl} class="text-zinc-400 hover:text-primary" rel="noopener noreferrer">Google Maps</a>
-				<a href={facebookUrl} class="text-zinc-400 hover:text-primary" rel="noopener noreferrer">Facebook</a>
+				<a href={mapsUrl} class="inline-block py-3 text-zinc-400 hover:text-primary" rel="noopener noreferrer">Google Maps</a>
+				<a href={facebookUrl} class="inline-block py-3 text-zinc-400 hover:text-primary" rel="noopener noreferrer">Facebook</a>
 			</p>
 		</div>
 	</section>

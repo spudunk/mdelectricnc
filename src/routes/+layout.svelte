@@ -24,10 +24,10 @@
 		</a>
 
 		<div class="hidden items-center gap-8 text-sm text-accent md:flex">
-			<a href="/#services" class="transition-colors hover:text-primary">Services</a>
-			<a href="/#builders" class="transition-colors hover:text-primary">Builders</a>
-			<a href="/#about" class="transition-colors hover:text-primary">About</a>
-			<a href="/#contact" class="transition-colors hover:text-primary">Contact</a>
+			<a href="/#services" class="py-3 transition-colors hover:text-primary">Services</a>
+			<a href="/#builders" class="py-3 transition-colors hover:text-primary">Builders</a>
+			<a href="/#about" class="py-3 transition-colors hover:text-primary">About</a>
+			<a href="/#contact" class="py-3 transition-colors hover:text-primary">Contact</a>
 		</div>
 
 		<a

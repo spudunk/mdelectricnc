@@ -22,6 +22,8 @@ export const site = {
 };
 
 export const mapsUrl = 'https://maps.app.goo.gl/jMm7yuvyPPm1jtFw8';
+export const googleReviewsUrl =
+	'https://search.google.com/local/reviews?placeid=ChIJpRPX8HMjUYgRKmBgeY6KGBk';
 export const facebookUrl = 'https://www.facebook.com/profile.php?id=61575121650048';
 export const googlePlaceID = 'ChIJpRPX8HMjUYgRKmBgeY6KGBk';
 export const licenseLookupUrl = 'https://arls-public.ncbeec.org/public/Search';
@@ -72,6 +74,7 @@ export const structuredData = {
 		'New construction wiring',
 		'Interior custom lighting',
 		'Panel upgrades',
+		'Structured network cabling',
 		'Dock wiring'
 	]
 };
@@ -79,17 +82,17 @@ export const structuredData = {
 export const testimonials = [
 	{
 		quote:
-			'Marcus explained everything and completed the job efficiently. We really appreciated the attention to the details and how respectful they were of our home.',
-		author: 'Google review'
+			'Marcus and his crew have done a few jobs around our house and recently did the electrical setup for our dock. They do excellent work and are very professional. He’s always been very responsive and their prices can’t be beat. Highly recommended if you’re looking for an electrician.',
+		author: 'Matt Hill'
 	},
 	{
 		quote:
-			'Marcus communicated directly, walked the entire project, and updated us throughout the day. He and his crew were polite and welcoming.',
-		author: 'Google review'
+			'Thank you Marcus (and crew) for the amazing job you did by updating our kitchen lights!! The recess lights are great. We also appreciate the timely manner in which you installed the lights and for being so diligent with being clean and tidying up the work area. We will definitely recommend you!',
+		author: 'Jaimie Cansler'
 	},
 	{
 		quote:
-			'Marcus and his crew do excellent work and are very professional. Always responsive, and their prices can’t be beat.',
-		author: 'Google review'
+			'My experience with Marcus was delightful. He is kind, professional, responded immediately to my text, and kept lines of communication open. His pricing was fair and honest. I would highly recommend him!!!!!',
+		author: 'DeDee Hubbard'
 	}
 ];
