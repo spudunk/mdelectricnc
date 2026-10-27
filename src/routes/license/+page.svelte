@@ -28,8 +28,8 @@
 		<p class="mb-10 text-zinc-400">
 			Pulled from the state board’s public license lookup. <br />
 			<a href={licenseLookupUrl} target="_blank" class="inline-block py-3 text-primary hover:underline" rel="noopener noreferrer">
-				Search the official NC Board Examiners of Electrical Contractors lookup
-			</a>.
+				Search the official NC Board Examiners of Electrical Contractors lookup.
+			</a>
 		</p>
 
 		<dl class="divide-y divide-zinc-800 rounded-2xl border border-zinc-800 bg-zinc-900">
