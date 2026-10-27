@@ -17,6 +17,7 @@
 		type Contact
 	} from '$lib';
 	import { turnstile, publicKey as tsPublicKey, publicDevKeys as tsKeys } from '$lib/turnstile';
+	import { fade } from 'svelte/transition';
 	import House from 'virtual:icons/material-symbols/house-outline';
 	import Handshake from 'virtual:icons/material-symbols/handshake-outline';
 	import Groups from 'virtual:icons/material-symbols/groups-outline';
@@ -329,18 +330,20 @@
 
 			<div class="min-h-36">
 				{#if contact}
-					{#if contact.tel && contact.phone}
-						<a
-							href={`tel:${contact.tel}`}
-							class="my-4 inline-block rounded bg-primary px-10 py-3 text-lg font-medium text-zinc-950 transition hover:brightness-110"
-						>
-							Call Now: {contact.phone}
-						</a>
-					{/if}
-					<div class="mt-2 flex flex-col gap-3 text-base">
-						<a href={`mailto:${contact.email}`} class="inline-block py-3 text-primary hover:underline">
-							{contact.email}
-						</a>
+					<div in:fade={{ duration: 300 }}>
+						{#if contact.tel && contact.phone}
+							<a
+								href={`tel:${contact.tel}`}
+								class="my-4 inline-block rounded bg-primary px-10 py-3 text-lg font-medium text-zinc-950 transition hover:brightness-110"
+							>
+								Call Now: {contact.phone}
+							</a>
+						{/if}
+						<div class="mt-2 flex flex-col gap-3 text-base">
+							<a href={`mailto:${contact.email}`} class="inline-block py-3 text-primary hover:underline">
+								{contact.email}
+							</a>
+						</div>
 					</div>
 				{:else if error}
 					<div class="mt-2 mb-8 flex justify-center gap-2 text-xs text-red-400">
