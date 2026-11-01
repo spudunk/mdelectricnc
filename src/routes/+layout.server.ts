@@ -3,7 +3,7 @@ import { getGoogleRating } from '$lib/server';
 import type { LayoutServerLoad } from './$types';
 
 const RATING_KEY = 'mde-google-rating';
-const FRESH_MS = 30 * 60 * 1000;
+const FRESH_MS = 4 * 60 * 60 * 1000;
 
 type StoredRating = {
 	rating: number | null;
