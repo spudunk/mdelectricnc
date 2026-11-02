@@ -4,7 +4,7 @@ import type { LayoutServerLoad } from './$types';
 
 const SITE = 'mdelectricnc';
 const RATING_KEY = 'mde-google-rating';
-const FRESH_MS = 4 * 60 * 60 * 1000;
+const FRESH_MS = 12 * 60 * 60 * 1000;
 
 type StoredRating = {
 	rating: number | null;
