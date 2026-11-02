@@ -12,7 +12,9 @@ type StoredRating = {
 	fetchedAt: number;
 };
 
-type RatingSource = 'cache' | 'api' | 'stale' | 'empty';
+type RatingSource = 'cache' | 'api' | 'stale' | 'empty' | 'kv_error';
+
+const empty = { rating: null, ratingCount: null };
 
 function logRating(event: {
 	source: RatingSource;
@@ -36,44 +38,59 @@ export const load: LayoutServerLoad = ({ platform }) => {
 
 	return {
 		googleRating: (async () => {
-			const cached = kv ? await kv.get<StoredRating>(RATING_KEY, 'json') : null;
-			const ageMs = cached ? Date.now() - cached.fetchedAt : null;
-			if (cached && ageMs != null && ageMs < FRESH_MS) {
+			if (!kv) {
+				logRating({ source: 'empty', kv: false, error: 'KV binding missing' });
+				return empty;
+			}
+
+			let cached: StoredRating | null;
+			try {
+				cached = await kv.get<StoredRating>(RATING_KEY, 'json');
+			} catch (error) {
+				logRating({
+					source: 'kv_error',
+					kv: true,
+					error: error instanceof Error ? error.message : 'KV read failed'
+				});
+				return empty;
+			}
+
+			if (!cached) {
+				logRating({ source: 'empty', kv: true, error: 'no cached rating' });
+				return empty;
+			}
+
+			const ageMs = Date.now() - cached.fetchedAt;
+			if (ageMs < FRESH_MS) {
 				logRating({ source: 'cache', kv: true, ageMs });
 				return { rating: cached.rating, ratingCount: cached.ratingCount };
 			}
 
 			try {
 				const fresh = await getGoogleRating(apiKey);
-				if (kv && fresh.rating != null) {
-					await kv.put(
-						RATING_KEY,
-						JSON.stringify({
-							rating: fresh.rating,
-							ratingCount: fresh.ratingCount,
-							fetchedAt: Date.now()
-						})
-					);
-					logRating({ source: 'api', kv: true, ageMs, status: fresh.status });
-					return { rating: fresh.rating, ratingCount: fresh.ratingCount };
-				}
-
-				if (cached) {
-					logRating({ source: 'stale', kv: Boolean(kv), ageMs, status: fresh.status });
+				if (fresh.rating == null) {
+					logRating({ source: 'stale', kv: true, ageMs, status: fresh.status });
 					return { rating: cached.rating, ratingCount: cached.ratingCount };
 				}
 
-				logRating({ source: 'empty', kv: Boolean(kv), ageMs, status: fresh.status });
+				await kv.put(
+					RATING_KEY,
+					JSON.stringify({
+						rating: fresh.rating,
+						ratingCount: fresh.ratingCount,
+						fetchedAt: Date.now()
+					})
+				);
+				logRating({ source: 'api', kv: true, ageMs, status: fresh.status });
 				return { rating: fresh.rating, ratingCount: fresh.ratingCount };
 			} catch (error) {
 				logRating({
-					source: cached ? 'stale' : 'empty',
-					kv: Boolean(kv),
+					source: 'stale',
+					kv: true,
 					ageMs,
 					error: error instanceof Error ? error.message : 'rating fetch failed'
 				});
-				if (cached) return { rating: cached.rating, ratingCount: cached.ratingCount };
-				return { rating: null, ratingCount: null };
+				return { rating: cached.rating, ratingCount: cached.ratingCount };
 			}
 		})()
 	};
