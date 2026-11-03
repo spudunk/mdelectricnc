@@ -1,6 +1,5 @@
 <script lang="ts">
 	import './layout.css';
-	import { page } from '$app/state';
 	import Logo from '$lib/Logo.svelte';
 	import { verifiedContact } from '$lib';
 
@@ -10,9 +9,7 @@
 	const contactHref = $derived(
 		vc?.tel
 			? `tel:${vc.tel}`
-			: page.url.pathname.startsWith('/packages')
-				? '/packages#call'
-				: '/#contact'
+			: '#contact'
 	);
 </script>
 

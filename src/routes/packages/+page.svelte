@@ -463,7 +463,7 @@
 		</div>
 	</section>
 
-	<section id="call" class="scroll-mt-20 px-5 py-16 sm:px-6">
+	<section id="contact" class="scroll-mt-20 px-5 py-16 sm:px-6">
 		<div class="mx-auto max-w-3xl text-center">
 			<p class="text-sm font-semibold tracking-[0.18em] text-primary uppercase">Next step</p>
 			<h2 class="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">
