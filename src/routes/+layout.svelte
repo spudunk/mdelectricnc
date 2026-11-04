@@ -11,7 +11,7 @@
 	const contactHref = $derived(vc?.tel ? `tel:${vc.tel}` : '#contact');
 	const links = [
 		{ href: '/#services', label: 'Services' },
-		{ href: '/packages', label: 'Packages' },
+		{ href: '/packages', label: 'Pricing' },
 		{ href: '/#builders', label: 'Builders' },
 		{ href: '/#about', label: 'About' },
 		{ href: '/#contact', label: 'Contact' }
