@@ -76,8 +76,16 @@
 			body: 'Recessed, architectural, and feature lighting laid out for the house, not a catalog. Clean switch legs and fixtures that match the design.'
 		},
 		{
-			title: 'Panels & Service',
+			title: 'Remodels',
+			body: 'Rewiring and new circuits for kitchens, additions, and whole-house remodels — opened up, brought up to code, and finished so the rest of the crew can keep moving.'
+		},
+		{
+			title: 'Panels',
 			body: 'Service entrances, panel upgrades, and dedicated circuits sized for the load a custom home actually carries — including shops, docks, and outbuildings.'
+		},
+		{
+			title: 'Service',
+			body: 'New circuits and upgrades for existing homes — repairs and improvements you can count on, backed by over 30 years of experience.'
 		},
 		{
 			title: 'Modern Network Cabling',
