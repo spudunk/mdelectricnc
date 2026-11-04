@@ -1,3 +1,8 @@
+import recessedCansHaloDark from '$lib/assets/recessed_cans_halo_dark.jpeg';
+import underCabinetLights2 from '$lib/assets/under_cabinet_lights2.jpeg';
+import barBacklight2 from '$lib/assets/bar_backlight2.jpeg';
+import spanInstall from '$lib/assets/Span Install_2.1.jpeg';
+
 export type Cell = true | false | string;
 
 export type PackageId = 'code' | 'comfort' | 'premium';
@@ -22,6 +27,7 @@ export type FeaturePhoto = {
 	caption: string;
 	/** CSS gradient used until a real project photo is supplied. */
 	tone: string;
+	image?: string;
 };
 
 export const packages: Package[] = [
@@ -169,22 +175,26 @@ export const featurePhotos: FeaturePhoto[] = [
 	{
 		title: 'HALO recessed lights',
 		caption: 'Night-light mode built into the recessed LEDs, so hallways stay usable after dark.',
-		tone: 'from-zinc-700 via-zinc-800 to-zinc-950'
+		tone: 'from-zinc-700 via-zinc-800 to-zinc-950',
+		image: recessedCansHaloDark
 	},
 	{
-		title: 'Kitchen lighting',
-		caption: 'Under-cabinet and in-cabinet lighting, wired before the cabinets go in.',
-		tone: 'from-amber-950 via-zinc-800 to-zinc-950'
+		title: 'Under-cabinet lights',
+		caption: 'Under-cabinet lighting, wired before the cabinets go in.',
+		tone: 'from-amber-950 via-zinc-800 to-zinc-950',
+		image: underCabinetLights2
 	},
 	{
 		title: 'Hidden TV wiring',
 		caption: 'A recessed box behind the TV so power and signal cables stay out of sight.',
-		tone: 'from-zinc-600 via-zinc-800 to-zinc-950'
+		tone: 'from-zinc-600 via-zinc-800 to-zinc-950',
+		image: barBacklight2
 	},
 	{
 		title: 'SPAN smart panel',
 		caption: 'A smart panel you can see and control from the app, including backup-ready circuits.',
-		tone: 'from-emerald-950 via-zinc-800 to-zinc-950'
+		tone: 'from-emerald-950 via-zinc-800 to-zinc-950',
+		image: spanInstall
 	},
 	{
 		title: 'Structured cabling',
@@ -196,11 +206,11 @@ export const featurePhotos: FeaturePhoto[] = [
 		caption: 'A dedicated circuit for an EV charger or welder, sized for the load.',
 		tone: 'from-zinc-700 via-zinc-900 to-zinc-950'
 	},
-	{
-		title: 'Cameras and automation',
-		caption: 'Perimeter cameras with AI detection, plus a Home Assistant dashboard for the house.',
-		tone: 'from-indigo-950 via-zinc-800 to-zinc-950'
-	}
+	// {
+	// 	title: 'Cameras and automation',
+	// 	caption: 'Perimeter cameras with AI detection, plus a Home Assistant dashboard for the house.',
+	// 	tone: 'from-indigo-950 via-zinc-800 to-zinc-950'
+	// }
 ];
 
 export const faqs = [

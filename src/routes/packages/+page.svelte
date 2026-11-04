@@ -78,7 +78,7 @@
 		};
 	}
 
-	let sqftInput = $state('2000');
+	let sqftInput = $state('');
 	let openSection = $state(sections[0]?.name ?? '');
 	const desktop = new MediaQuery('(min-width: 768px)');
 
@@ -128,7 +128,7 @@
 				Electrical packages built to fit your home.
 			</h1>
 			<p class="mt-5 max-w-2xl text-lg text-zinc-300 sm:text-xl">
-				Compare three packages side by side. Every option is priced per square foot.
+				Compare three packages side by side. <br /> New construction is priced per square foot.
 			</p>
 
 			<div class="mt-8">
@@ -176,6 +176,7 @@
 						id="sqft"
 						name="sqft"
 						inputmode="decimal"
+						placeholder="2000"
 						bind:value={sqftInput}
 						class="w-full rounded-lg border border-zinc-300 bg-zinc-50 px-4 py-3 text-lg sm:max-w-xs"
 					/>
@@ -259,7 +260,7 @@
 													: ''}"
 											>
 												{#if value === true}
-													<span class="text-primary" aria-label="Included">✓</span>
+													<span class="text-xl font-bold text-primary" aria-label="Included">✓</span>
 												{:else if value === false}
 													<span class="text-zinc-400" aria-label="Not included">—</span>
 												{:else}
@@ -304,7 +305,7 @@
 													<span class="px-1 py-1 text-center">
 														{#if value === true}
 															<span
-																class="text-primary"
+																class="text-xl font-bold text-primary"
 																aria-label="Option {packages[i].option} included">✓</span
 															>
 														{:else if value === false}
@@ -338,18 +339,26 @@
 			<h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">
 				What these features look like
 			</h2>
-			<p class="mt-3 text-zinc-600">Project photos are on the way. These stand in until then.</p>
+			<p class="mt-3 text-zinc-600">A few project photos, with more on the way.</p>
 
 			<div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
 				{#each featurePhotos as photo (photo.title)}
 					<figure class="overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm">
-						<div
-							class="flex aspect-[4/3] items-end bg-linear-to-br {photo.tone} p-4 text-sm text-zinc-300"
-							role="img"
-							aria-label="Placeholder photo: {photo.title}"
-						>
-							Photo coming
-						</div>
+						{#if photo.image}
+							<img
+								src={photo.image}
+								alt={photo.title}
+								class="aspect-[4/3] w-full object-cover"
+							/>
+						{:else}
+							<div
+								class="flex aspect-[4/3] items-end bg-linear-to-br {photo.tone} p-4 text-sm text-zinc-300"
+								role="img"
+								aria-label="Placeholder photo: {photo.title}"
+							>
+								Photo coming
+							</div>
+						{/if}
 						<figcaption class="p-4">
 							<p class="font-semibold">{photo.title}</p>
 							<p class="mt-1 text-sm text-zinc-600">{photo.caption}</p>
@@ -364,7 +373,7 @@
 		<div class="mx-auto max-w-6xl">
 			<p class="mb-3 text-sm font-semibold tracking-[0.18em] text-primary uppercase">Proof</p>
 			<h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">
-				Homeowners who already called
+				Happy Homeowners
 			</h2>
 
 			<a
